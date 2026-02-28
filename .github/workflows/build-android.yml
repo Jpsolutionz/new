@@ -18,20 +18,45 @@ jobs:
       with:
         node-version: '18'
     
-    - name: Setup Expo CLI
-      run: npm install -g eas-cli
+    - name: Use bare React Native package.json
+      run: |
+        if [ -f "package.json.new" ]; then
+          cp package.json.new package.json
+          echo "✓ Using package.json.new (bare React Native)"
+        fi
     
     - name: Install dependencies
       run: npm install
     
-    - name: Setup Expo and build APK
-      env:
-        EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    - name: Create Android folder using React Native CLI
       run: |
-        # Login to Expo (you'll need to add EXPO_TOKEN to GitHub secrets)
-        # For now, we'll use npx to build locally
-        npx expo install expo-dev-client
-        npx expo prebuild --platform android
+        echo "Creating Android folder without Expo..."
+        
+        # Create a temporary React Native project to get android folder
+        npx react-native@0.73.2 init TempProject --version 0.73.2 --skip-install
+        
+        # Copy android folder to our project
+        cp -r TempProject/android ./
+        
+        # Clean up temp project
+        rm -rf TempProject
+        
+        echo "✓ Android folder created"
+        
+        # Update app name and package in android files
+        sed -i "s/TempProject/PerfectLedger/g" android/settings.gradle
+        sed -i "s/TempProject/PerfectLedger/g" android/app/build.gradle
+        sed -i "s/com.tempproject/com.perfectledger/g" android/app/build.gradle
+        sed -i "s/com.tempproject/com.perfectledger/g" android/app/src/main/AndroidManifest.xml
+        
+        # Update MainActivity.java package name
+        find android/app/src/main/java -type f -name "*.java" -exec sed -i "s/com.tempproject/com.perfectledger/g" {} +
+        
+        # Move MainActivity to correct package structure
+        mkdir -p android/app/src/main/java/com/perfectledger
+        find android/app/src/main/java -name "MainActivity.java" -exec mv {} android/app/src/main/java/com/perfectledger/ \;
+        
+        echo "✓ Package names updated"
         
     - name: Setup Java JDK
       uses: actions/setup-java@v4
@@ -45,10 +70,11 @@ jobs:
     - name: Build Android Release APK
       run: |
         cd android
-        ./gradlew assembleRelease --no-daemon
+        ./gradlew assembleRelease --no-daemon --stacktrace
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: perfect-ledger-apk
+        name: perfect-ledger-v2.1.0
         path: android/app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: error
