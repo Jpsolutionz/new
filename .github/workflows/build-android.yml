@@ -3,8 +3,6 @@ name: Build Android APK
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -19,16 +17,27 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
     
+    - name: Setup Expo CLI
+      run: npm install -g eas-cli
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Setup Expo and build APK
+      env:
+        EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      run: |
+        # Login to Expo (you'll need to add EXPO_TOKEN to GitHub secrets)
+        # For now, we'll use npx to build locally
+        npx expo install expo-dev-client
+        npx expo prebuild --platform android
+        
     - name: Setup Java JDK
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
-    
-    - name: Install dependencies
-      run: npm install
     
     - name: Make Gradlew executable
       run: chmod +x android/gradlew
@@ -41,5 +50,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: app-release
+        name: perfect-ledger-apk
         path: android/app/build/outputs/apk/release/app-release.apk
