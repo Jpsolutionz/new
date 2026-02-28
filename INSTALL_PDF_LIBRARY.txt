@@ -1,0 +1,34 @@
+========================================================================
+  INSTALL PDF GENERATION LIBRARY
+========================================================================
+
+To enable PDF download functionality, you need to install the PDF library:
+
+1. Open Command Prompt in the JustPerfectSolutionz folder:
+   cd C:\Users\HP\Downloads\new\new\JustPerfectSolutionz
+
+2. Install the library:
+   npm install react-native-html-to-pdf
+
+3. For Expo (if using Expo Go):
+   npx expo install expo-print expo-sharing
+
+4. Restart Metro bundler:
+   - Press Ctrl+C to stop
+   - Run: npm start
+
+========================================================================
+  WHICH LIBRARY TO USE
+========================================================================
+
+If you're using Expo Go app:
+  → Use expo-print (already included in Expo)
+  → No additional installation needed
+
+If you're using bare React Native:
+  → Use react-native-html-to-pdf
+  → Requires native build
+
+Since you're using Expo, the expo-print library should already be available!
+
+========================================================================

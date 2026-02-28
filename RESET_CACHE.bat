@@ -1,0 +1,3 @@
+@echo off
+echo Clearing Metro bundler cache...
+npm start -- --reset-cache

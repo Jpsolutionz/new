@@ -1,0 +1,78 @@
+========================================
+MANUAL COMMANDS TO PUSH TO GITHUB
+========================================
+
+Copy and paste these commands one by one:
+
+========================================
+STEP 1: Open Command Prompt
+========================================
+
+1. Press Windows key
+2. Type: cmd
+3. Press Enter
+
+========================================
+STEP 2: Go to project folder
+========================================
+
+cd C:\Users\HP\Downloads\new\new\JustPerfectSolutionz
+
+========================================
+STEP 3: Update package.json
+========================================
+
+copy package.json package.json.expo.backup
+copy package.json.new package.json
+
+========================================
+STEP 4: Initialize Git
+========================================
+
+git init
+
+========================================
+STEP 5: Add files
+========================================
+
+git add .
+
+========================================
+STEP 6: Create commit
+========================================
+
+git commit -m "Initial commit - React Native with HTTPS"
+
+========================================
+STEP 7: Add remote
+========================================
+
+Replace YOUR_USERNAME with your GitHub username:
+
+git remote add origin https://github.com/YOUR_USERNAME/perfect-ledger.git
+
+========================================
+STEP 8: Push to GitHub
+========================================
+
+git branch -M main
+git push -u origin main
+
+========================================
+STEP 9: Enter credentials
+========================================
+
+When asked, enter:
+- GitHub username
+- GitHub password (or personal access token)
+
+========================================
+DONE!
+========================================
+
+Now go to your repository on GitHub:
+https://github.com/YOUR_USERNAME/perfect-ledger
+
+Click "Actions" tab to see the build!
+
+========================================

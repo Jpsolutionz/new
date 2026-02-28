@@ -1,0 +1,87 @@
+========================================
+⭐ START HERE - PUSH TO GITHUB ⭐
+========================================
+
+You created a repository on GitHub!
+Now let's push your code.
+
+========================================
+OPTION 1: USE THE SCRIPT (EASIEST)
+========================================
+
+1. Find this file in this folder:
+   PUSH_TO_GITHUB.bat
+
+2. Double-click it
+
+3. When asked, paste your repository URL
+   Example: https://github.com/YOUR_USERNAME/perfect-ledger.git
+
+4. Press Enter
+
+5. Enter GitHub username and password
+
+6. Done!
+
+========================================
+OPTION 2: MANUAL COMMANDS
+========================================
+
+If the script doesn't work:
+
+1. Open: MANUAL_COMMANDS.txt
+
+2. Copy commands one by one
+
+3. Paste in Command Prompt
+
+4. Done!
+
+========================================
+YOUR REPOSITORY URL
+========================================
+
+On GitHub, copy the URL that looks like:
+https://github.com/YOUR_USERNAME/perfect-ledger.git
+
+Replace YOUR_USERNAME with your actual username!
+
+========================================
+AFTER PUSHING
+========================================
+
+1. Go to your repository on GitHub
+
+2. Click "Actions" tab
+
+3. You'll see "Build Android APK" running
+
+4. Wait 10-15 minutes
+
+5. Click on completed build (green checkmark)
+
+6. Scroll to "Artifacts"
+
+7. Download "app-release"
+
+8. Extract ZIP and install APK
+
+========================================
+QUICK SUMMARY
+========================================
+
+✓ Repository created on GitHub
+→ Run PUSH_TO_GITHUB.bat
+→ Enter repository URL
+→ Wait for build on GitHub
+→ Download APK
+→ Install on phone
+
+========================================
+NEED HELP?
+========================================
+
+Read: MANUAL_COMMANDS.txt
+It has step-by-step commands!
+
+========================================

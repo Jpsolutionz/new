@@ -1,0 +1,112 @@
+========================================================================
+  COMPLETE SETUP GUIDE - Perfect Ledger App
+========================================================================
+
+WHAT WE ACCOMPLISHED TODAY:
+✓ Added company name field to login and registration
+✓ Company name displays in PDF header
+✓ Added Total Interest calculation with percentage input
+✓ Colorful professional dashboard design
+✓ Email or Mobile number support for signup/login
+✓ Fixed registration flow (signup → login → dashboard)
+✓ All features working: ledgers, transactions, PDF download
+
+========================================================================
+
+HOW TO RUN THE APP:
+
+STEP 1: START BACKEND SERVER
+-----------------------------
+1. Go to: C:\Users\HP\Downloads\new\new
+2. Double-click: START_BACKEND_SERVER.bat
+3. Wait for: "Application startup complete"
+4. Keep this window OPEN!
+
+STEP 2: VERIFY BACKEND IS RUNNING
+----------------------------------
+1. Open browser on your phone
+2. Go to: http://10.126.93.209:8080/docs
+3. You should see FastAPI Swagger UI
+4. If not, check:
+   - Backend server is running
+   - Both devices on same WiFi
+   - Windows Firewall allows Python
+
+STEP 3: START MOBILE APP
+-------------------------
+1. Go to: C:\Users\HP\Downloads\new\new\JustPerfectSolutionz
+2. Open Command Prompt here
+3. Run: npm start
+4. Scan QR code on your phone with Expo Go app
+
+========================================================================
+
+APP FEATURES:
+
+1. REGISTRATION
+   - Name, Company Name, Email/Mobile, Password
+   - After signup → Login page
+
+2. LOGIN
+   - Email/Mobile, Password, Company Name
+   - After login → Dashboard
+
+3. DASHBOARD
+   - Total People (count of ledgers)
+   - Total Credit (sum of all credits)
+   - Total Debit (sum of all debits)
+   - Total Interest (tap to set %, calculated on total credit)
+   - Add Ledger button
+   - List of all ledgers
+
+4. LEDGER MANAGEMENT
+   - Add ledger with name, mobile, notes
+   - View ledger details
+   - Add credit/debit transactions
+   - Delete ledger (long press)
+   - Download PDF with company name
+
+5. PDF DOWNLOAD
+   - Company name at top
+   - Ledger details
+   - All transactions
+   - Summary with totals
+
+========================================================================
+
+TROUBLESHOOTING:
+
+Problem: "Network request failed"
+Solution: Backend server not running or not reachable
+Fix: Run START_BACKEND_SERVER.bat and verify step 2 above
+
+Problem: "Registration failed"
+Solution: Backend not accessible from phone
+Fix: Check both devices on same WiFi, test http://10.126.93.209:8080/docs
+
+Problem: Blank page after login
+Solution: Metro bundler needs restart
+Fix: Press Ctrl+C, then run: npm start
+
+Problem: PDF download error
+Solution: Libraries not installed
+Fix: Run INSTALL_PDF_SIMPLE.bat
+
+========================================================================
+
+DEMO CREDENTIALS (if needed):
+Email: admin@test.com
+Password: admin123
+Company: Just Perfect Solutionz
+
+========================================================================
+
+IMPORTANT NOTES:
+- Backend server must be running before using app
+- Keep backend server window open
+- Both computer and phone must be on same WiFi
+- Use email OR mobile number (mobile converts to email format)
+- Interest rate is saved and persists across app restarts
+- Deleted ledgers stay deleted (saved in AsyncStorage)
+
+========================================================================

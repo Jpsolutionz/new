@@ -1,0 +1,40 @@
+========================================================================
+  TEST BACKEND CONNECTION
+========================================================================
+
+To verify your backend is running and accessible:
+
+1. Make sure backend is running:
+   - Go to: C:\Users\HP\Downloads\new\new\ledger-app\ledger-backend-fastapi
+   - Run: KILL_PYTHON_AND_START.bat
+   - Wait for "Application startup complete"
+
+2. Test from your phone's browser:
+   - Open browser on your phone
+   - Go to: http://10.126.93.209:8080/docs
+   - You should see the FastAPI Swagger UI
+
+3. If step 2 fails:
+   - Your phone can't reach the backend
+   - Check if both devices are on the same WiFi network
+   - Check Windows Firewall settings
+
+4. Test registration from Swagger UI:
+   - Click on "POST /api/v1/auth/register"
+   - Click "Try it out"
+   - Enter:
+     {
+       "name": "Test User",
+       "email": "test@example.com",
+       "password": "test123",
+       "role": "user"
+     }
+   - Click "Execute"
+   - Should return 200 OK with a token
+
+5. Common errors:
+   - "Network request failed" = Backend not reachable
+   - "User already exists" = Try different email
+   - "API request failed" = Backend error (check backend console)
+
+========================================================================

@@ -1,0 +1,221 @@
+📱 BUILD ANDROID APK - COMPLETE GUIDE
+========================================================================
+
+This guide will help you build a standalone Android APK that you can
+install on any Android phone without needing Expo Go.
+
+========================================================================
+OPTION 1: BUILD WITH EAS (RECOMMENDED - EASIEST)
+========================================================================
+
+EAS (Expo Application Services) builds your app in the cloud.
+No Android Studio needed!
+
+STEP 1: Install EAS CLI
+------------------------
+Open Command Prompt and run:
+
+   npm install -g eas-cli
+
+STEP 2: Login to Expo
+----------------------
+Run:
+
+   eas login
+
+If you don't have an Expo account:
+   eas register
+
+STEP 3: Configure Project
+--------------------------
+Run:
+
+   cd JustPerfectSolutionz
+   eas build:configure
+
+This will set up your project for building.
+
+STEP 4: Build APK
+------------------
+Run:
+
+   eas build -p android --profile preview
+
+This will:
+- Upload your code to Expo servers
+- Build the APK in the cloud
+- Give you a download link when done
+
+Build takes about 10-20 minutes.
+
+STEP 5: Download APK
+--------------------
+When build completes, you'll get a download link.
+Download the APK file to your computer.
+
+STEP 6: Install on Phone
+-------------------------
+1. Transfer APK to your phone (via USB, email, or cloud)
+2. Open the APK file on your phone
+3. Allow "Install from Unknown Sources" if prompted
+4. Install the app!
+
+========================================================================
+OPTION 2: BUILD LOCALLY (REQUIRES ANDROID STUDIO)
+========================================================================
+
+This builds the APK on your computer.
+Requires Android Studio and more setup.
+
+STEP 1: Install Android Studio
+-------------------------------
+Download from: https://developer.android.com/studio
+Install with default settings.
+
+STEP 2: Set Environment Variables
+----------------------------------
+Add these to your system environment variables:
+
+   ANDROID_HOME = C:\Users\YourName\AppData\Local\Android\Sdk
+   
+Add to PATH:
+   %ANDROID_HOME%\platform-tools
+   %ANDROID_HOME%\tools
+   %ANDROID_HOME%\tools\bin
+
+STEP 3: Install Java JDK
+-------------------------
+Download JDK 17 from: https://adoptium.net/
+Install and set JAVA_HOME environment variable.
+
+STEP 4: Prebuild
+----------------
+Run:
+
+   cd JustPerfectSolutionz
+   npx expo prebuild
+
+This creates android/ folder with native code.
+
+STEP 5: Build APK
+-----------------
+Run:
+
+   cd android
+   gradlew assembleRelease
+
+APK will be created at:
+   android/app/build/outputs/apk/release/app-release.apk
+
+========================================================================
+OPTION 3: EXPO BUILD (LEGACY - STILL WORKS)
+========================================================================
+
+STEP 1: Install Expo CLI
+-------------------------
+Run:
+
+   npm install -g expo-cli
+
+STEP 2: Login
+-------------
+Run:
+
+   expo login
+
+STEP 3: Build
+-------------
+Run:
+
+   cd JustPerfectSolutionz
+   expo build:android -t apk
+
+Follow the prompts. Build takes 10-20 minutes.
+
+STEP 4: Download
+----------------
+When done, download the APK from the link provided.
+
+========================================================================
+RECOMMENDED APPROACH FOR BEGINNERS
+========================================================================
+
+Use OPTION 1 (EAS Build) because:
+✓ No Android Studio needed
+✓ No environment setup needed
+✓ Builds in the cloud
+✓ Just install EAS CLI and build
+✓ Works on any computer
+
+========================================================================
+IMPORTANT NOTES
+========================================================================
+
+1. BACKEND SERVER:
+   - The APK will connect to: http://10.216.74.209:8080
+   - Make sure backend is running when using the app
+   - If your IP changes, you need to rebuild the APK
+
+2. FIRST BUILD:
+   - First build takes longer (15-20 minutes)
+   - Subsequent builds are faster (5-10 minutes)
+
+3. APK SIZE:
+   - Expect APK to be 40-60 MB
+   - This is normal for React Native apps
+
+4. TESTING:
+   - Test the APK on your phone before distributing
+   - Make sure backend connection works
+
+5. UPDATES:
+   - If you change code, rebuild the APK
+   - Users need to reinstall the new APK
+
+========================================================================
+QUICK START (EASIEST METHOD)
+========================================================================
+
+1. npm install -g eas-cli
+2. cd JustPerfectSolutionz
+3. eas login
+4. eas build -p android --profile preview
+5. Wait 10-20 minutes
+6. Download APK from link
+7. Install on phone
+
+Done!
+
+========================================================================
+TROUBLESHOOTING
+========================================================================
+
+Q: "eas: command not found"
+A: Run: npm install -g eas-cli
+
+Q: Build fails with "No bundle identifier"
+A: app.json already has package name configured
+
+Q: APK won't install on phone
+A: Enable "Install from Unknown Sources" in phone settings
+
+Q: App crashes on startup
+A: Make sure backend server is running and accessible
+
+Q: "Network request failed" in app
+A: Check if phone can reach http://10.216.74.209:8080
+   Phone and computer must be on same WiFi
+
+========================================================================
+BATCH FILES CREATED
+========================================================================
+
+We've created these helper files:
+
+1. INSTALL_EAS.bat - Installs EAS CLI
+2. BUILD_APK.bat - Builds the APK using EAS
+3. CHECK_BUILD_STATUS.bat - Checks build progress
+
+Just double-click these files to run them!
+
+========================================================================

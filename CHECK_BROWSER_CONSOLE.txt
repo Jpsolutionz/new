@@ -1,0 +1,49 @@
+========================================================================
+  HOW TO CHECK BROWSER CONSOLE FOR ERRORS
+========================================================================
+
+When you see a blank page, the browser console will show the actual error.
+
+STEPS:
+
+1. Open the app in browser (press 'w' in Metro terminal)
+
+2. Press F12 on your keyboard (or right-click > Inspect)
+
+3. Click on the "Console" tab
+
+4. Look for RED error messages
+
+5. Copy the ENTIRE error message and send it to me
+
+========================================================================
+  COMMON ERRORS AND WHAT THEY MEAN
+========================================================================
+
+ERROR: "loadData is not a function"
+  → Context is not properly initialized
+
+ERROR: "Cannot read property 'navigate' of undefined"
+  → Navigation is not set up correctly
+
+ERROR: "Element type is invalid"
+  → Component import is wrong
+
+ERROR: "Invariant Violation: main has not been registered"
+  → AppRegistry issue (we fixed this)
+
+ERROR: Network request failed
+  → Backend is not running or wrong URL
+
+========================================================================
+  WHAT TO SEND ME
+========================================================================
+
+Please copy and paste:
+1. The FULL error message from Console (red text)
+2. The stack trace (gray text below the error)
+3. Any warnings (yellow text)
+
+This will help me identify the exact problem!
+
+========================================================================

@@ -1,0 +1,40 @@
+========================================================================
+  PDF LIBRARIES INSTALLATION - SUPER SIMPLE!
+========================================================================
+
+The PDF download feature needs two libraries to be installed.
+
+EASIEST WAY - JUST DOUBLE CLICK THIS FILE:
+   
+   📁 INSTALL_PDF_SIMPLE.bat
+
+That's it! The batch file will:
+- Navigate to the correct folder automatically
+- Install the required libraries
+- Show you what to do next
+
+========================================================================
+
+OR DO IT MANUALLY:
+
+1. Open Command Prompt (CMD) - NOT PowerShell
+
+2. Copy and paste this EXACT command:
+   cd /d "C:\Users\HP\Downloads\new\new\JustPerfectSolutionz" && npm install
+
+3. Wait for installation to complete
+
+4. Restart the Metro bundler:
+   - Press Ctrl+C to stop current server
+   - Run: npm start
+   - Scan QR code again on your phone
+
+========================================================================
+
+WHAT WILL BE INSTALLED:
+- expo-print (for generating PDF files)
+- expo-sharing (for sharing/downloading PDF files)
+
+These have been added to package.json already.
+
+========================================================================

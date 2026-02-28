@@ -1,0 +1,54 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    
+    - name: Install dependencies
+      run: |
+        if [ -f "package.json.new" ]; then
+          cp package.json.new package.json
+        fi
+        npm install
+    
+    - name: Create Android directory if missing
+      run: |
+        if [ ! -d "android" ]; then
+          npx react-native init TempApp
+          cp -r TempApp/android ./
+          rm -rf TempApp
+        fi
+    
+    - name: Make Gradlew executable
+      run: chmod +x android/gradlew
+    
+    - name: Build Android Release APK
+      run: |
+        cd android
+        ./gradlew assembleRelease --no-daemon
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: perfect-ledger-v2.1.0
+        path: android/app/build/outputs/apk/release/app-release.apk
