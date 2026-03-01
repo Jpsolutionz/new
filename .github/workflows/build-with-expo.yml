@@ -1,0 +1,39 @@
+name: Build APK with Expo on GitHub
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Setup Expo
+      uses: expo/expo-github-action@v8
+      with:
+        expo-version: latest
+        token: ${{ secrets.EXPO_TOKEN }}
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build APK with Expo
+      run: |
+        npx expo install expo-dev-client
+        npx eas-cli build --platform android --profile preview --non-interactive --no-wait
+    
+    - name: Wait for build and download
+      run: |
+        echo "Build started on Expo servers"
+        echo "Check status at: https://expo.dev"
+        echo "APK will be available for download when complete"
