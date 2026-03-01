@@ -1,0 +1,41 @@
+========================================
+  GRADLE TIMEOUT ERROR - FIXED!
+========================================
+
+ERROR WAS:
+----------
+"Downloading from https://services.gradle.org/distributions/gradle-8.14.3-bin.zip failed: timeout (10000ms)"
+
+This means GitHub Actions couldn't download Gradle in 10 seconds.
+
+FIXES APPLIED:
+--------------
+1. Increased timeout from 10 seconds to 60 seconds
+2. Added Gradle caching so it doesn't download every time
+3. Added --refresh-dependencies flag
+
+WHAT TO DO NOW:
+---------------
+
+OPTION 1: Run in CMD (Recommended)
+-----------------------------------
+1. Press Windows Key + R
+2. Type: cmd
+3. Press Enter
+4. Run this:
+
+cd /d "C:\Users\HP\Downloads\new\new\JustPerfectSolutionz" && git add . && git commit -m "Fix Gradle timeout" && git push origin master
+
+
+OPTION 2: Double-click this file
+---------------------------------
+PUSH_FIX.bat
+
+
+THEN:
+-----
+5. Go to: https://github.com/Jpsolutionz/new/actions
+6. Wait 10-15 minutes
+7. If it still fails with timeout, we'll try a different approach
+
+========================================
