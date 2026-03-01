@@ -18,46 +18,19 @@ jobs:
       with:
         node-version: '18'
     
-    - name: Use bare React Native package.json
-      run: |
-        if [ -f "package.json.new" ]; then
-          cp package.json.new package.json
-          echo "✓ Using package.json.new (bare React Native)"
-        fi
-    
     - name: Install dependencies
-      run: npm install
+      run: npm ci || npm install
     
-    - name: Create Android folder using React Native CLI
+    - name: Setup Expo and create Android folder
       run: |
-        echo "Creating Android folder without Expo..."
+        echo "Installing Expo CLI..."
+        npm install -g expo-cli
         
-        # Create a temporary React Native project to get android folder
-        npx react-native@0.73.2 init TempProject --version 0.73.2 --skip-install
+        echo "Running Expo Prebuild to create android folder..."
+        npx expo prebuild --platform android --clean
         
-        # Copy android folder to our project
-        cp -r TempProject/android ./
-        
-        # Clean up temp project
-        rm -rf TempProject
-        
-        echo "✓ Android folder created"
-        
-        # Update app name and package in android files
-        sed -i "s/TempProject/PerfectLedger/g" android/settings.gradle
-        sed -i "s/TempProject/PerfectLedger/g" android/app/build.gradle
-        sed -i "s/com.tempproject/com.perfectledger/g" android/app/build.gradle
-        sed -i "s/com.tempproject/com.perfectledger/g" android/app/src/main/AndroidManifest.xml
-        
-        # Update MainActivity.java package name
-        find android/app/src/main/java -type f -name "*.java" -exec sed -i "s/com.tempproject/com.perfectledger/g" {} +
-        
-        # Move MainActivity to correct package structure
-        mkdir -p android/app/src/main/java/com/perfectledger
-        find android/app/src/main/java -name "MainActivity.java" -exec mv {} android/app/src/main/java/com/perfectledger/ \;
-        
-        echo "✓ Package names updated"
-        
+        echo "✓ Android folder created by Expo"
+    
     - name: Setup Java JDK
       uses: actions/setup-java@v4
       with:
