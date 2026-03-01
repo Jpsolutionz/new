@@ -1,0 +1,76 @@
+========================================
+   ERROR FOUND!
+========================================
+
+ERROR MESSAGE:
+"This request has been automatically failed 
+because it uses a deprecated version of 
+actions/upload-artifact: v3"
+
+WHAT THIS MEANS:
+GitHub stopped supporting upload-artifact@v3
+We need to use v4 instead
+
+========================================
+   THE FIX
+========================================
+
+The workflow file on your PC already has v4!
+But GitHub might have an old version with v3.
+
+SOLUTION:
+Push the updated workflow file again
+
+========================================
+   RUN THIS NOW
+========================================
+
+👉 FIX_ARTIFACT_ERROR.bat
+
+This will:
+1. Add the workflow file (with v4)
+2. Commit it
+3. Push to GitHub
+4. Trigger a new build
+
+========================================
+   WHAT WILL HAPPEN
+========================================
+
+After running the bat file:
+
+1. Go to: https://github.com/Jpsolutionz/new/actions
+
+2. You'll see a NEW build starting
+
+3. This time it should work because:
+   ✓ Using upload-artifact@v4 (not v3)
+   ✓ Using checkout@v4
+   ✓ Using setup-node@v4
+   ✓ Using setup-java@v4
+
+4. Wait 10-15 minutes
+
+5. If it still fails, we'll see a DIFFERENT error
+   (not the artifact v3 error)
+
+========================================
+   IF IT STILL FAILS
+========================================
+
+If you see a different error after this fix:
+1. Click on the failed build
+2. Look for the step with red X
+3. Tell me the new error message
+
+Common next errors might be:
+- "expo: command not found"
+- "npm ERR! code ERESOLVE"
+- "Android folder not found"
+- "Gradle build failed"
+
+========================================
+
+RUN: FIX_ARTIFACT_ERROR.bat
+
+========================================

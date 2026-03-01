@@ -1,0 +1,52 @@
+========================================
+👆 DO THESE 2 THINGS NOW
+========================================
+
+THING 1: Click on the TOP build
+         (the first one in the list)
+         
+         It says something like:
+         "Fix workflow: use React Native CLI..."
+         
+         👆 CLICK IT
+
+THING 2: Look for RED X (❌)
+         
+         You'll see a list of steps.
+         One of them has a RED X.
+         
+         Tell me which one!
+
+========================================
+THAT'S IT!
+========================================
+
+Just do those 2 things and tell me:
+
+"The step with RED X is: [name]"
+
+Then I can fix it!
+
+========================================
+EXAMPLE
+========================================
+
+You might say:
+"The step with RED X is: Install dependencies"
+
+Or:
+"The step with RED X is: Create Android folder"
+
+Or:
+"The step with RED X is: Build APK"
+
+========================================
+CAN'T FIND IT?
+========================================
+
+Just tell me what you see on the screen
+after you click the top build!
+
+I'll help you find it!
+
+========================================

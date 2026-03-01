@@ -1,0 +1,137 @@
+========================================
+🔧 COMMON GITHUB ACTIONS ERRORS
+========================================
+
+Once you tell me which step failed, here's
+what the fix will be:
+
+========================================
+ERROR 1: Install dependencies
+========================================
+
+Step name: "Install dependencies"
+
+Common error messages:
+- "npm ERR! code ERESOLVE"
+- "npm ERR! peer dependency"
+- "npm ERR! ENOENT"
+
+FIX: Update package.json to fix dependencies
+
+========================================
+ERROR 2: Setup Expo and create Android folder
+========================================
+
+Step name: "Setup Expo and create Android folder"
+
+Common error messages:
+- "expo: command not found"
+- "expo prebuild failed"
+- "Android folder creation failed"
+
+FIX: Update workflow to install expo-cli properly
+
+========================================
+ERROR 3: Make Gradlew executable
+========================================
+
+Step name: "Make Gradlew executable"
+
+Common error messages:
+- "chmod: cannot access 'android/gradlew'"
+- "No such file or directory"
+
+FIX: Android folder wasn't created properly
+
+========================================
+ERROR 4: Build Android Release APK
+========================================
+
+Step name: "Build Android Release APK"
+
+Common error messages:
+- "Gradle build failed"
+- "Task :app:assembleRelease FAILED"
+- "Could not find com.android.tools.build:gradle"
+
+FIX: Update gradle configuration or dependencies
+
+========================================
+ERROR 5: Upload APK
+========================================
+
+Step name: "Upload APK"
+
+Common error messages:
+- "No files were found with the provided path"
+- "APK not found"
+
+FIX: APK wasn't built, need to fix build step
+
+========================================
+MOST LIKELY ERRORS
+========================================
+
+Based on your previous builds, it's probably:
+
+1. Install dependencies (npm install fails)
+   → Fix: Update package.json
+
+2. Setup Expo and create Android folder
+   → Fix: Use expo prebuild correctly
+
+3. Build Android Release APK
+   → Fix: Gradle configuration
+
+========================================
+WHAT I NEED FROM YOU
+========================================
+
+Just tell me:
+
+"The step with RED X is: [step name]"
+
+Then I'll create the EXACT fix for that error!
+
+========================================
+WHY MULTIPLE BUILDS FAILED
+========================================
+
+You have 8 failed builds because:
+
+1. First build: Had one error
+2. I fixed that error
+3. Second build: Hit a DIFFERENT error
+4. I fixed that error
+5. Third build: Hit ANOTHER error
+6. And so on...
+
+This is NORMAL! Each fix reveals the next issue.
+
+We're getting closer with each build!
+
+========================================
+CURRENT STATUS
+========================================
+
+Latest workflow file uses:
+- expo prebuild (most reliable method)
+- actions/upload-artifact@v4 (latest version)
+- Proper Java setup
+- Correct gradle commands
+
+This SHOULD work, but we need to see
+which step is failing to confirm!
+
+========================================
+NEXT STEPS
+========================================
+
+1. You: Click top build, find RED X step
+2. You: Tell me which step has RED X
+3. Me: Create targeted fix
+4. You: Run 🔥_FINAL_FIX_GITHUB.bat
+5. Wait 10-15 minutes
+6. Download APK!
+
+========================================
