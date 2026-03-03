@@ -19,7 +19,7 @@
         "backgroundColor": "#0066cc"
       },
       "package": "com.perfectledger.app",
-      "versionCode": 6,
+      "versionCode": 7,
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE"

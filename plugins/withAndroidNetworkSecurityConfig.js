@@ -20,19 +20,18 @@ module.exports = function withAndroidNetworkSecurityConfig(config) {
       fs.mkdirSync(xmlDir, { recursive: true });
     }
     
-    // Create network_security_config.xml with more permissive settings
+    // Create network_security_config.xml to allow HTTP traffic
     const networkSecurityConfig = `<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <!-- Allow cleartext traffic for our EC2 server -->
+    <!-- Allow HTTP traffic for EC2 server -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">13.60.249.27</domain>
     </domain-config>
     
-    <!-- Base config to allow cleartext for debugging -->
+    <!-- Base config to allow HTTP -->
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
             <certificates src="system" />
-            <certificates src="user" />
         </trust-anchors>
     </base-config>
 </network-security-config>`;
