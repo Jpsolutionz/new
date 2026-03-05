@@ -1,0 +1,49 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-levels: '31'
+          build-tools-version: '31.0.0'
+          
+      - name: Install Dependencies
+        run: |
+          cd JustPerfectSolutionz
+          npm install
+          
+      - name: Build APK
+        run: |
+          cd JustPerfectSolutionz
+          npm run build:android
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: perfect-ledger-v2.1.0
+          path: JustPerfectSolutionz/android/app/build/outputs/apk/release/*.apk
+          retention-days: 30
