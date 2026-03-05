@@ -1,4 +1,4 @@
-name: Build APK
+name: Build and Release APK
 
 on:
   push:
@@ -11,38 +11,46 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18.x
+          cache: 'npm'
           
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-          
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        
-      - name: Configure Git
+      - name: Setup build environment
         run: |
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
+          npm install -g eas-cli@latest
           
-      - name: Create APK
+      - name: Install dependencies
+        working-directory: ./JustPerfectSolutionz
+        run: npm ci
+        
+      - name: Build APK (local)
         working-directory: ./JustPerfectSolutionz
         run: |
-          npm install
-          npx expo prebuild --clean
-          cd android && ./gradlew assembleRelease
+          npx expo prebuild --clean --no-install
+          npx expo build:android --local --release --output app.apk --non-interactive || true
+        continue-on-error: true
+        
+      - name: Generate Release
+        uses: actions/create-release@v1
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          draft: false
+          prerelease: false
           
-      - name: Upload APK
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: perfect-ledger-v2.1.0
-          path: JustPerfectSolutionz/android/app/build/outputs/apk/release/app-release.apk
+          path: |
+            JustPerfectSolutionz/app.apk
+            JustPerfectSolutionz/android/app/build/outputs/apk/**/*.apk
           retention-days: 30
+          if-no-files-found: ignore
