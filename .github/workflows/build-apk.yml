@@ -23,27 +23,21 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
           
-      - name: Install Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          api-levels: '31'
-          build-tools-version: '31.0.0'
-          
-      - name: Install Dependencies
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        
+      - name: Create APK
+        working-directory: ./JustPerfectSolutionz
         run: |
-          cd JustPerfectSolutionz
           npm install
-          
-      - name: Build APK
-        run: |
-          cd JustPerfectSolutionz
-          npm run build:android
+          npx expo prebuild --clean
+          cd android && ./gradlew assembleRelease
           
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: perfect-ledger-v2.1.0
-          path: JustPerfectSolutionz/android/app/build/outputs/apk/release/*.apk
+          path: JustPerfectSolutionz/android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
