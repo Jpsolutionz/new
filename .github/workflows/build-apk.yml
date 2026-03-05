@@ -28,6 +28,11 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          
       - name: Create APK
         working-directory: ./JustPerfectSolutionz
         run: |
